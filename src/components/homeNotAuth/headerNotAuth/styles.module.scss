@@ -1,0 +1,36 @@
+@import "../../../../styles/color.smodule.scss";
+
+
+.ctaSection {
+  background-color: $lightRed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0px;
+  gap: 30px;
+}
+.imgCta {
+  width: 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.imgLogoNav {
+  width: 180px;
+}
+
+.navBtn {
+  margin: 0px 5px;
+  border-color: transparent;
+  color: $lightGray;
+
+  &:hover {
+    border-color: $lightRed;
+    color: white;
+    background-color: transparent;
+  }
+}
