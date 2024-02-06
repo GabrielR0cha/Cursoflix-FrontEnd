@@ -1,4 +1,3 @@
-"use client";
 import "../styles/globals.scss";
 
 import CardsSection from "@/components/homeNotAuth/cardsSection";
