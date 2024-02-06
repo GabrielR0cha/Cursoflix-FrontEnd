@@ -1,7 +1,7 @@
 import { Container,Button } from "reactstrap";
 import styles from "./styles.module.scss";
-import "../../../../styles/globals.scss";
 import "bootstrap/dist/css/bootstrap.min.css"
+import Link from "next/link";
 const HeaderNoAuth = () => {
   return <>
 
@@ -14,8 +14,9 @@ const HeaderNoAuth = () => {
   <Container className={styles.nav}>
 			<img src="/logoOnebitflix.svg" alt="logoOnebitflix" className={styles.imgLogoNav}/>
 			<div>
-				<Button className={styles.navBtn} outline>Entrar</Button>
-				<Button className={styles.navBtn} outline>Quero fazer parte</Button>
+				<Link href='/register'><Button className={styles.navBtn} outline>Entrar</Button></Link>
+				<Link href='/register'><Button className={styles.navBtn} outline>Quero fazer parte</Button></Link>
+
 			</div>
 		</Container>
   </>;
