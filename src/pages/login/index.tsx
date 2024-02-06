@@ -15,8 +15,15 @@ const Login = function () {
   const [toastIsOpen, setToastIsOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
-  const registerSucess = router.query.sucess;
+
   useEffect(() => {
+    if (sessionStorage.getItem("ocursoflix-token")) {
+      router.push("/home");
+    }
+  }, []);
+
+  useEffect(() => {
+    const registerSucess = router.query.sucess;
     if (registerSucess === "true") {
       setToastColor("bg-success");
       setToastIsOpen(true);

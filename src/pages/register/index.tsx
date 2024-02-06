@@ -3,7 +3,7 @@ import Head from "next/head";
 import HeaderGeneric from "@/components/common/headerGenric";
 import { Button, Container, Form, FormGroup, Input, Label } from "reactstrap";
 import Footer from "@/components/common/footer";
-import { FormEvent,useState} from "react";
+import { FormEvent,useEffect,useState} from "react";
 import authService from "@/service/authService";
 import { useRouter } from "next/router";
 import ToastComponent from "@/components/common/toast";
@@ -13,7 +13,11 @@ const Register = () => {
   const router = useRouter();
   const [toastIsOpen, setToastIsOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
-
+  useEffect(() => {
+    if (sessionStorage.getItem("ocursoflix-token")) {
+      router.push("/home");
+    }
+  }, [])
   const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
