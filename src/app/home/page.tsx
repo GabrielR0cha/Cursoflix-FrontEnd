@@ -1,7 +1,10 @@
 "use client"
 
+import FavoritesCourses from "@/components/homeAuth/favoriteCategory";
 import FeaturedSection from "@/components/homeAuth/featuresSection";
+import NewestCategory from "@/components/homeAuth/newestCategory";
 import Head from "next/head";
+import { Container } from "reactstrap";
 
 
 
@@ -14,6 +17,12 @@ const HomeAuth =  () => {
       </Head>
       <main>
       <FeaturedSection />
+      <Container>
+
+      <NewestCategory />
+      <FavoritesCourses />
+      </Container>
+
       </main>
     </>
   );
