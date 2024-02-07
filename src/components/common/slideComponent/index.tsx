@@ -10,7 +10,13 @@ interface props {
 }
 
 const SlideComponent = function ({ course }: props) {
-  let slideCount = course.length > 4 ? 4 : course.length;
+  let slideCount = 0;
+
+  if (course.length > 4) {
+    slideCount = 4;
+  } else if (course) {
+     slideCount = course.length;
+  }
 
 
 
@@ -18,30 +24,33 @@ const SlideComponent = function ({ course }: props) {
     <>
       <div  className="d-flex flex-column align-items-center py-4">
         <Splide
-          options={{
-            type: "loop",
-            perPage: slideCount,
-            perMove: 1,
-            width:slideCount *300,
-            pagination: false,
-            breakpoints: {
-              1200: {
-                perPage: slideCount <= 2 ? 1 : 2,
-              width: slideCount <= 2 ? 300 : 600,
-              arrows: course.length < 2 ? false : true,
-              drag: course.length < 2 ? false : true,
-            },
-            600: {
-              perPage: 1,
-              width: 300,
-              arrows: course.length < 1 ? false : true,
-              drag: course.length < 1 ? false : true
-            },
-            300: {
-              width: 250,
-            },
-            }
-          }}
+          	options={{
+              type: "loop",
+              perPage: slideCount,
+              perMove: 1,
+              width: slideCount * 300,
+              pagination: false,
+              arrows: course.length > 4 ? true : false,
+              drag: course.length > 4 ? true : false,
+              breakpoints: {
+                1200: {
+                  perPage: slideCount >= 2 ? 2 : 1,
+                  width: slideCount >= 2 ? 640 : 300,
+                  arrows: course.length > 2 ? true : false,
+                  drag: course.length > 2 ? true : false,
+                },
+                
+                640: {
+                  perPage: 1,
+                  width: 300,
+                  arrows: course.length > 1 ? true : false,
+                  drag: course.length > 1 ? true : false,
+                },
+                300: {
+                  width: 250,
+                },
+              },
+            }}
         >
           {course?.map((course) => (
             <SplideSlide key={course.id}>
