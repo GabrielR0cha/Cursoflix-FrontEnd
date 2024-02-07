@@ -1,3 +1,5 @@
+
+
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css"
 import { CourseType } from "../../../service/coursesSerivce";
@@ -8,13 +10,8 @@ interface props {
 }
 
 const SlideComponent = function ({ course }: props) {
-  let slideCount = 0;
+  let slideCount = course.length > 4 ? 4 : course.length;
 
-  if (course.length > 4) {
-    slideCount = 4;
-  } else if (course) {
-     slideCount = course.length;
-  }
 
 
   return (
@@ -29,16 +26,16 @@ const SlideComponent = function ({ course }: props) {
             pagination: false,
             breakpoints: {
               1200: {
-                perPage: slideCount >= 2 ? 2 : 1,
-              width: slideCount >= 2 ? 640 : 300,
-              arrows: course.length > 2 ? true : false,
-              drag: course.length > 2 ? true : false,
+                perPage: slideCount >= 2 ? 1 : 2,
+              width: slideCount >= 2 ? 300 : 600,
+              arrows: course.length > 2 ? false : true,
+              drag: course.length > 2 ? false : true,
             },
             600: {
               perPage: 1,
               width: 300,
-              arrows: course.length > 1 ? true : false,
-              drag: course.length > 1 ? true : false
+              arrows: course.length > 1 ? false : true,
+              drag: course.length > 1 ? false : true
             },
             300: {
               width: 250,

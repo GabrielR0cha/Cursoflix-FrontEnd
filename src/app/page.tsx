@@ -1,26 +1,37 @@
-import "../styles/globals.scss";
+"use client";
 
+import "../styles/globals.scss"
+import { useEffect, useState } from "react";
+import Head from "next/head";
+import styles from "../styles/page.module.scss";
 import CardsSection from "@/components/homeNotAuth/cardsSection";
 import HeaderNoAuth from "@/components/homeNotAuth/headerNotAuth";
 import SlideSection from "@/components/homeNotAuth/slideSection";
 import PresentationSection from "@/components/presentationSection";
 import courseService, { CourseType } from "@/service/coursesSerivce";
-import { GetStaticProps } from "next";
-import Head from "next/head";
-import { ReactNode, useEffect } from "react";
-import styles from "./page.module.scss";
 import Footer from "@/components/common/footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-interface IndexPageProps {
-  children?: ReactNode;
-  course: CourseType[];
-}
+const HomeNotAuth = () => {
+  const [newestCourses, setNewestCourses] = useState<CourseType[]>([]);
 
-const HomeNotAuth = ({ course }: IndexPageProps) => {
   useEffect(() => {
+    const fetchNewestCourses = async () => {
+      try {
+        const res = await courseService.getNewestCourses();
+        setNewestCourses(res.data);
+      } catch (error) {
+        console.error("Error fetching newest courses:", error);
+      }
+    };
+
+    fetchNewestCourses();
     AOS.init();
+
+    return () => {
+      AOS.refresh();
+    };
   }, []);
 
   return (
@@ -47,22 +58,12 @@ const HomeNotAuth = ({ course }: IndexPageProps) => {
           <CardsSection />
         </div>
         <div data-aos="fade-up" data-aos-duration="1350">
-          <SlideSection newestCourses={course} />
+          <SlideSection newestCourses={newestCourses} />
         </div>
         <Footer />
       </main>
     </>
   );
-};
-
-export const getStaticProps: GetStaticProps = async () => {
-  const res = await courseService.getNewestCourses();
-  return {
-    props: {
-      course: res.data,
-    },
-    revalidate: 3600 * 24,
-  };
 };
 
 export default HomeNotAuth;

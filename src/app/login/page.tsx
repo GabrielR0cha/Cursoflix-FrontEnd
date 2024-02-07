@@ -1,16 +1,17 @@
-
+"use client"
 
 import HeaderGeneric from "@/components/common/headerGenric";
 import ToastComponent from "@/components/common/toast";
 import authService from "@/service/authService";
 import Head from "next/head";
-import { useRouter } from "next/router";
+import { useRouter,useSearchParams  } from "next/navigation";
 import { FormEvent, useEffect, useState } from "react";
 import { Button, Container, Form, FormGroup, Input, Label } from "reactstrap";
 import styles from "../../styles/registerLogin.module.scss";
 
-const Login = function () {
+const Login = () => {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [toastColor, setToastColor] = useState("");
   const [toastIsOpen, setToastIsOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
@@ -23,7 +24,9 @@ const Login = function () {
   }, []);
 
   useEffect(() => {
-    const registerSucess = router.query.sucess;
+    const registerSucess = searchParams.get('sucess')
+    console.log(registerSucess);
+    
     if (registerSucess === "true") {
       setToastColor("bg-success");
       setToastIsOpen(true);
@@ -32,7 +35,7 @@ const Login = function () {
       }, 1000 * 3);
       setToastMessage("Cadatro feito com sucesso!");
     }
-  }, [router.query]);
+  }, [searchParams]);
 
   const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

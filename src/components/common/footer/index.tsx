@@ -5,8 +5,8 @@ const Footer = function () {
   return <>
   <>
 	<Container className={styles.footer}>
-	  <img src="/logoOnebitcode.svg" alt="logoFooter" className={styles.footerLogo} />
-    <a href="https://onebitcode.com" target={"blank"} className={styles.footerLink}>ONEBITCODE.COM</a>
+	  {/* <img src="/logoOnebitcode.svg" alt="logoFooter" className={styles.footerLogo} /> */}
+    <a href="" target={"blank"} className={styles.footerLink}>Cursoflix.COM</a>
   </Container>
 </></>;
 };

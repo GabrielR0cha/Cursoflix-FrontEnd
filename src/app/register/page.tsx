@@ -1,3 +1,5 @@
+"use client"
+
 import styles from "../../styles/registerLogin.module.scss";
 import Head from "next/head";
 import HeaderGeneric from "@/components/common/headerGenric";
@@ -5,7 +7,7 @@ import { Button, Container, Form, FormGroup, Input, Label } from "reactstrap";
 import Footer from "@/components/common/footer";
 import { FormEvent,useEffect,useState} from "react";
 import authService from "@/service/authService";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import ToastComponent from "@/components/common/toast";
 
 const Register = () => {

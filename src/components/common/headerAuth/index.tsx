@@ -3,10 +3,9 @@ import { useState } from "react";
 import { Container, Form, Input } from "reactstrap";
 import styles from "./styles.module.scss";
 import Modal from "react-modal";
-import {  useRouter } from "next/router";
-
-Modal.setAppElement("#__next");
-
+import { useRouter } from "next/navigation";
+import ReactModal from "react-modal";
+ReactModal.setAppElement('*');
 const HeaderAuth = function () {
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false);
@@ -29,8 +28,8 @@ const HeaderAuth = function () {
       <Container className={styles.nav}>
         <Link href="/home">
           <img
-            src="/logoOnebitflix.svg"
-            alt="logoOnebitflix"
+            src="/logo.png"
+            alt="logoCursoflix"
             className={styles.imgLogoNav}
           />
         </Link>
@@ -53,16 +52,19 @@ const HeaderAuth = function () {
           </p>
         </div>
         <Modal
-        className={styles.modal}
+          className={styles.modal}
           isOpen={modalOpen}
           onRequestClose={handleCloseModal}
           shouldCloseOnEsc={true}
           overlayClassName={styles.overlayModal}
+
         >
           <Link href="/profile">
             <p className={styles.modalLink}>Meus Dados</p>
           </Link>
-          <p className={styles.modalLink} onClick={handleLogout}>Sair</p>
+          <p className={styles.modalLink} onClick={handleLogout}>
+            Sair
+          </p>
         </Modal>
       </Container>
     </>
