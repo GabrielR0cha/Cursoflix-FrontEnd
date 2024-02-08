@@ -108,7 +108,10 @@ const UserFrom = () => {
               }}
             />
           </FormGroup>
-          <FormGroup>
+      
+        </div>
+        <div className={styles.inputNormalDiv}>
+        <FormGroup>
             <Label className={styles.label} for="phone">
               WHATSAPP / TELEGRAM
             </Label>

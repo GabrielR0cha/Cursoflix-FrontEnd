@@ -2,6 +2,8 @@
 
 
 .form {
+  display: flex;
+  flex-direction: column;
   border: 1px solid $darkGray;
   padding: 20px 0px;
   max-width: 100%;
@@ -85,12 +87,13 @@
   width: 550px;
 }
 .formBtn {
+  
   border-color: $lightRed;
   text-align: center;
   color: white;
   font-weight: bold;
   font-size: 15px;
-  padding: 6px 20px;
+  padding: 6px 10px;
   transition: 0.4s;
   &:hover {
     border-color: $darkRed;
@@ -121,7 +124,16 @@
     border-color: $lightRed;
     color: $lightGray;
   }
+  &:active {
+    background-color:transparent ;
+    box-shadow: none;
+
+  }&:focus {
+    background-color: transparent;
+    box-shadow: none;
+  }
 }
+
 
 .footer {
   background-color: black;
@@ -130,7 +142,11 @@
 .header {
   background-color: black;
 }
-
+.btnContainer {
+  width: 100%;
+  text-align: center;
+  margin: 1rem;
+}
 @media (max-width: 991px) {
   .title {
     text-align: center;
