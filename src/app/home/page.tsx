@@ -1,5 +1,6 @@
 "use client"
 
+import Footer from "@/components/common/footer";
 import FavoritesCourses from "@/components/homeAuth/favoriteCategory";
 import FeaturedCategory from "@/components/homeAuth/featuredCategory";
 import FeaturedSection from "@/components/homeAuth/featuresSection";
@@ -26,6 +27,7 @@ const HomeAuth =  () => {
       <FeaturedCategory />
       <ListCategories />
       </Container>
+      <Footer />
 
       </main>
     </>

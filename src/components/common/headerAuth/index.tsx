@@ -1,14 +1,28 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Form, Input } from "reactstrap";
 import styles from "./styles.module.scss";
 import Modal from "react-modal";
 import { useRouter } from "next/navigation";
 import ReactModal from "react-modal";
+import profileService from "@/service/profileService";
 ReactModal.setAppElement('*');
-const HeaderAuth = function () {
+
+
+
+const HeaderAuth =  () => {
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false);
+  const [initials, setInitials] = useState("");
+
+
+  useEffect(() => {
+    profileService.fetchCurrent().then((user) => {
+      const firstNameInitial = user.firstName.slice(0, 1);
+      const lastNameInitial = user.lastName.slice(0, 1);
+      setInitials(firstNameInitial + lastNameInitial);
+    });
+  }, []);
 
   const handleOpenModal = () => {
     setModalOpen(true);
@@ -48,7 +62,7 @@ const HeaderAuth = function () {
             className={styles.searchImg}
           />
           <p className={styles.userProfile} onClick={handleOpenModal}>
-            gr
+          {initials}
           </p>
         </div>
         <Modal

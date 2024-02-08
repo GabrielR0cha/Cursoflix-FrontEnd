@@ -16,7 +16,6 @@ export type CourseType = {
   episodes?: EpisodeType[];
 };
 
-const token = sessionStorage.getItem("cursoflix-token");
 const courseService = {
   getNewestCourses: async () => {
     const res = await api.get("/courses/newest").catch((error) => {
@@ -29,6 +28,7 @@ const courseService = {
   },
 
   getFeaturedCourses: async () => {
+    const token = sessionStorage.getItem("cursoflix-token");
 
     const res = await api
       .get("/courses/featured", {
@@ -46,6 +46,8 @@ const courseService = {
   },
 
   addToFav: async (courseId: number | string) => {
+    const token = sessionStorage.getItem("cursoflix-token");
+
     const res = await api.post("/favorites", {courseId}, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -61,6 +63,7 @@ const courseService = {
   return res;
   },
   removeFav: async (courseId: number | string) => {
+    const token = sessionStorage.getItem("cursoflix-token");
 
   
     const res = await api
@@ -80,7 +83,7 @@ const courseService = {
   },
 
   getFavCourses: async () => {
-    const token = sessionStorage.getItem("onebitflix-token");
+    const token = sessionStorage.getItem("cursoflix-token");
   
     const res = await api
       .get("/favorites", {
