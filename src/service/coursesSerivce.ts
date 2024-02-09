@@ -67,11 +67,10 @@ const courseService = {
 
   
     const res = await api
-      .delete("/favorites", {
+      .delete(`/favorites/${courseId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        data: { courseId }
       })
       .catch((error) => {
         console.log(error.response.data.message);
@@ -155,13 +154,12 @@ const courseService = {
   },
   removeLike: async (courseId: number | string) => {
     const token = sessionStorage.getItem("cursoflix-token");
-  
+    
     const res = await api
-    .delete("/likes", {
+    .delete(`/likes/${courseId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      data: { courseId },
     })
     .catch((error) => {
       console.log(error.response.data.message);
