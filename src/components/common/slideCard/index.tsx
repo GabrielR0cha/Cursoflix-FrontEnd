@@ -5,6 +5,7 @@ import { CourseType } from "../../../service/coursesSerivce";
 interface props {
   course:CourseType;
 }
+
 const SlideCard =  ({ course }: props) => {
   return (
     <>

@@ -98,6 +98,22 @@ const courseService = {
       });
   
       return res;
+  },getSearch: async (name: string) => {
+    const token = sessionStorage.getItem("cursoflix-token");
+  
+    const res = await api
+    .get(`/courses/search?name=${name}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    })
+    .catch((error) => {
+      console.log(error.response.data.messsage);
+  
+      return error.response;
+    });
+  
+    return res;
   },
 };
 
