@@ -33,9 +33,12 @@ const HomeNotAuth = () => {
       AOS.refresh();
     };
   }, []);
+  
 
   return (
+    
     <>
+    
       <Head>
         <title>Cursoflix</title>
         <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />

@@ -12,6 +12,7 @@ import styles from "../../../styles/coursePage.module.scss";
 const CoursePage = () => {
   const [course, setCourse] = useState<CourseType>();
   const { id } = useParams();
+  
   const [liked, setLiked] = useState(false);
   const [favorited, setFavorited] = useState(false);
 
@@ -130,7 +131,7 @@ const CoursePage = () => {
             </p>
            ) : course?.episodes &&
            course?.episodes.map((episode) => (
-             <EpisodeList key={episode.id} episode={episode} />
+             <EpisodeList key={episode.id} episode={episode} course={course}/>
            ))}
         </Container>
       </main>
